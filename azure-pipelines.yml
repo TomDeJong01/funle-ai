@@ -1,0 +1,33 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: CopyFiles@2
+      displayName: 'Use $(environment) env file'
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/environment/$(environment)'
+        Contents: '.env'
+        TargetFolder: '$(Build.SourcesDirectory)/'
+        OverWrite: true
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'DockerHub Semanticateam'
+        repository: 'semanticasoftware/funle-ai'
+        command: 'buildAndPush'
+        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: '$(tagVersion)'

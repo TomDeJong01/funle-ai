@@ -1,0 +1,15 @@
+{
+    "total_tests": 1246,
+    "svm_accuracy": 0.918,
+    "svm accuracy high probability": 0.971,
+    "svm tests discared due to low probability": 184,
+    "rf_accuracy": 0.925,
+    "rf accuracy high probability": 0.981,
+    "rf tests discared due to low probability": 219,
+    "gb_accuracy": 0.918,
+    "gb accuracy high probability": 0.982,
+    "gb tests discared due to low probability": 262,
+    "dnn_accuracy": 0.914,
+    "dnn accuracy high probability": 0.947,
+    "dnn tests discared due to low probability": 85
+}
